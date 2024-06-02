@@ -7,7 +7,7 @@ def main():
 
 
     # Wait for user input
-    valid_commands = []
+    valid_commands = ["exit 0"]
     while True:
         sys.stdout.write("$ ")
         sys.stdout.flush()
@@ -15,6 +15,8 @@ def main():
         if user_command not in valid_commands:
             print(f"{user_command}: command not found")
             continue
+        if user_command == "exit 0":
+            break
 
 
 
