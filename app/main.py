@@ -1,11 +1,9 @@
 import sys
-
-
 def main():
-    # You can use print statements as follows for debugging, they'll be visible when running tests.
-    print("Logs from your program will appear here!")
+    """
+    This function prompts the user for input and waits for user input.
+    """
 
-    # Uncomment this block to pass the first stage
     sys.stdout.write("$ ")
     sys.stdout.flush()
 
