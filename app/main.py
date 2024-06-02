@@ -7,7 +7,7 @@ def main():
 
 
     # Wait for user input
-    valid_commands = ["exit", "echo"]
+    valid_commands = ["exit", "echo", "type"]
     while True:
         sys.stdout.write("$ ")
         sys.stdout.flush()
@@ -19,6 +19,11 @@ def main():
             sys.exit(0)
         if command[0] == "echo":
             print(" ".join(command[1:]))
+        if command[0] == "type":
+            if(command[1] in valid_commands):
+                print(f"{command[1]} is a shell builtin")
+            else:
+                print(f"{command[1]} not found")
 
 
 
