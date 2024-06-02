@@ -7,16 +7,20 @@ def main():
 
 
     # Wait for user input
-    valid_commands = ["exit 0"]
+    valid_commands = ["exit", "echo"]
     while True:
         sys.stdout.write("$ ")
         sys.stdout.flush()
-        user_command = input()
-        if user_command not in valid_commands:
-            print(f"{user_command}: command not found")
+        command = input().strip().split(" ")
+        if command[0] not in valid_commands:
+            print(f"{command[0]}: command not found")
             continue
-        if user_command == "exit 0":
-            break
+        if command[0] + " " + command[1] == "exit 0":
+            sys.exit(0)
+        if command[0] == "echo":
+            print(" ".join(command[1:]))
+
+
 
 
 
