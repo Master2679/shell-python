@@ -14,7 +14,7 @@ def main():
     # If user types type, print the type of the command
     # If user types an invalid command, print "command not found"
     PATH = os.environ.get("PATH")
-    valid_commands = ["exit", "echo", "type"]
+    valid_commands = ["exit", "echo", "type", "pwd"]
     paths = PATH.split(":")
     while True:
         cmd_path = None
@@ -28,7 +28,7 @@ def main():
             else:
                 print(f"{command[0]}: command not found")
                 continue
-        if command[0] + " " + command[1] == "exit 0":
+        if " ".join(command) == "exit 0":
             sys.exit(0)
         if command[0] == "echo":
             print(" ".join(command[1:]))
@@ -45,6 +45,8 @@ def main():
                     print(f"{command[1]} is {cmd_path}")
                 else:
                     print(f"{command[1]} not found")
+        if command[0] == "pwd":
+            print(f"{os.getcwd()}")
 
 
 
