@@ -1,5 +1,6 @@
 import sys
 import os
+import sys
 def main():
     """
     This function prompts the user for input and waits for user input.
@@ -14,13 +15,19 @@ def main():
     # If user types an invalid command, print "command not found"
     PATH = os.environ.get("PATH")
     valid_commands = ["exit", "echo", "type"]
+    paths = PATH.split(":")
     while True:
+        cmd_path = None
         sys.stdout.write("$ ")
-        sys.stdout.flush()
         command = input().strip().split(" ")
         if command[0] not in valid_commands:
-            print(f"{command[0]}: command not found")
-            continue
+            if os.path.isfile(f"{command[0]}"):
+                cmd_path = f"{command[0]}"
+            if cmd_path:
+                os.system(f"{' '.join(command)}")
+            else:
+                print(f"{command[0]}: command not found")
+                continue
         if command[0] + " " + command[1] == "exit 0":
             sys.exit(0)
         if command[0] == "echo":
