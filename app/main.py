@@ -49,7 +49,7 @@ def main():
             print(f"{os.getcwd()}")
         if command[0] == "cd":
             try:
-                os.chdir(command[1])
+                os.chdir(os.path.expanduser(command[1]))
             except FileNotFoundError:
                 print(f"{command[1]}: No such file or directory")
             except NotADirectoryError:
